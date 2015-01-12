@@ -22,14 +22,4 @@ class SummaryTests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
         super.tearDown()
     }
-    
-//    func testIntersect() {
-//        var a = ["hello", "another", "andAnother", "oneMore"]
-//        var b = ["hello", "oneMore", "another"]
-//        
-//        var expectedResult = ["hello", "another", "oneMore"]
-//        
-//        XCTAssert(summary.intersect(a, b: b) == expectedResult)
-//    }
-    
 }
