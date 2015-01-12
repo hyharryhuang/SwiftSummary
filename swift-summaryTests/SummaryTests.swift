@@ -23,13 +23,13 @@ class SummaryTests: XCTestCase {
         super.tearDown()
     }
     
-    func testIntersect() {
-        var a = ["hello", "another", "andAnother", "oneMore"]
-        var b = ["hello", "oneMore", "another"]
-        
-        var expectedResult = ["hello", "another", "oneMore"]
-        
-        XCTAssert(summary.intersect(a, b: b) == expectedResult)
-    }
+//    func testIntersect() {
+//        var a = ["hello", "another", "andAnother", "oneMore"]
+//        var b = ["hello", "oneMore", "another"]
+//        
+//        var expectedResult = ["hello", "another", "oneMore"]
+//        
+//        XCTAssert(summary.intersect(a, b: b) == expectedResult)
+//    }
     
 }
