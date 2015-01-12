@@ -122,12 +122,28 @@ class Summary {
         return bestSentence
     }
     
-    func getSummary(title:String, content:String, sentencesDictionary:[String:Int])
+    public func getSummary(title:String, content:String) -> String
     {
+        var sentencesDictionary = getSentenceRanks(content)
+        
         //split content into paragraphs
         var paragraphs = splitContentToParagraphs(content)
         
         //add title
-    
+        var summary = [String]()
+
+        summary.append(title.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet()))
+        summary.append("")
+        
+        for paragraph in paragraphs {
+            var sentence = getBestSentence(paragraph, sentencesDictionary: sentencesDictionary)
+            var trimmedSentence = sentence.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
+            
+            if countElements(trimmedSentence) > 0 {
+                summary.append(trimmedSentence)
+            }
+        }
+        
+        return "\n".join(summary)
     }
 }

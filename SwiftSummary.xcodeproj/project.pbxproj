@@ -368,7 +368,7 @@
 				INFOPLIST_FILE = "swift-summaryTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = SwiftSummaryTests;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/swift-summary.app/swift-summary";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SwiftSummary.app/SwiftSummary";
 			};
 			name = Debug;
 		};
@@ -383,7 +383,7 @@
 				INFOPLIST_FILE = "swift-summaryTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = SwiftSummaryTests;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/swift-summary.app/swift-summary";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SwiftSummary.app/SwiftSummary";
 			};
 			name = Release;
 		};
