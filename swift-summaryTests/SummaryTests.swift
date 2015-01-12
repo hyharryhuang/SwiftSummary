@@ -9,7 +9,9 @@
 import UIKit
 import XCTest
 
-class swift_summaryTests: XCTestCase {
+class SummaryTests: XCTestCase {
+    
+    var summary = Summary()
     
     override func setUp() {
         super.setUp()
@@ -21,16 +23,13 @@ class swift_summaryTests: XCTestCase {
         super.tearDown()
     }
     
-    func testExample() {
-        // This is an example of a functional test case.
-        XCTAssert(true, "Pass")
-    }
-    
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measureBlock() {
-            // Put the code you want to measure the time of here.
-        }
+    func testIntersect() {
+        var a = ["hello", "another", "andAnother", "oneMore"]
+        var b = ["hello", "oneMore", "another"]
+        
+        var expectedResult = ["hello", "another", "oneMore"]
+        
+        XCTAssert(summary.intersect(a, b: b) == expectedResult)
     }
     
 }
