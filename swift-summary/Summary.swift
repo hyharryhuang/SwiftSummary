@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Summary {
+public class Summary {
     
     func splitContentToSentences(content:String) -> [String]
     {
@@ -22,7 +22,7 @@ class Summary {
         return content.componentsSeparatedByString("\n\n");
     }
     
-    func getSentencesIntersectionScore(sent1:String, sent2:String) -> Int
+    func getSentencesIntersectionScore(sent1:String, sent2:String) -> Float
     {
         //split sentences to words
         let s1 = sent1.componentsSeparatedByString(" ");
@@ -38,7 +38,7 @@ class Summary {
         let s1InS2 = s1.filter { contains(s2, $0) }
         
         //score is the normalised intersection value
-        return s1InS2.count / ((s1.count + s2.count)/2)
+        return Float(s1InS2.count) / (Float(s1.count + s2.count)/2.0)
     }
     
     func formatSentence(sentence:String) -> String
@@ -49,20 +49,20 @@ class Summary {
         return modifiedString
     }
 
-    func getSentenceRanks(content:String) -> [String:Int]
+    func getSentenceRanks(content:String) -> [String:Float]
     {
         var sentences = splitContentToSentences(content)
         
         var n = sentences.count
         
-        var values = [[Int]]()
+        var values = [[Float]]()
         
         //calculate intersection of every two sentences
         
-        for i in 0 ... n {
-            var jValues = [Int]()
+        for i in 0 ... n-1 {
+            var jValues = [Float]()
             
-            for j in 0 ... n {
+            for j in 0 ... n-1 {
                 jValues.append(getSentencesIntersectionScore(sentences[i], sent2: sentences[j]))
             }
             
@@ -72,13 +72,13 @@ class Summary {
         //build overall sentence scores.
         //the overall score of a sentence is the sum of all its individual intersection scores.
         
-        var sentencesDictionary = [String:Int]()
+        var sentencesDictionary = [String:Float]()
         
-        for i in 0 ... n {
-            var score = 0
-            var jValues = [Int]()
+        for i in 0 ... n-1 {
+            var score:Float = 0.0
+            var jValues = [Float]()
             
-            for j in 0 ... n {
+            for j in 0 ... n-1 {
                 if(i == j)
                 {
                     continue
@@ -96,10 +96,10 @@ class Summary {
     }
     
     //return the best sentence in a paragraph
-    func getBestSentence(paragraph:String, sentencesDictionary:[String: Int]) -> String
+    func getBestSentence(paragraph:String, sentencesDictionary:[String: Float]) -> String
     {
         //Split the paragraph into sentences
-        var sentences = splitContentToParagraphs(paragraph)
+        var sentences = splitContentToSentences(paragraph)
         
         if(sentences.count < 2) {
             return ""
@@ -107,7 +107,7 @@ class Summary {
         
         //Get best sentence according to the sentences dictionary
         var bestSentence = ""
-        var maxValue = 0
+        var maxValue:Float = 0.0
         
         for s in sentences {
             var formatedSentence = formatSentence(s)

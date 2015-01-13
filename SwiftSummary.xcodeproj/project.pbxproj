@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7C792F1E1A6477D30004C3E2 /* test.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7C792F1D1A6477D30004C3E2 /* test.txt */; };
 		7CCC910B1A605D2A0084E532 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CCC910A1A605D2A0084E532 /* AppDelegate.swift */; };
 		7CCC910D1A605D2A0084E532 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CCC910C1A605D2A0084E532 /* ViewController.swift */; };
 		7CCC91101A605D2A0084E532 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7CCC910E1A605D2A0084E532 /* Main.storyboard */; };
@@ -26,6 +27,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7C792F1D1A6477D30004C3E2 /* test.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test.txt; sourceTree = "<group>"; };
 		7CCC91051A605D2A0084E532 /* SwiftSummary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftSummary.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7CCC91091A605D2A0084E532 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7CCC910A1A605D2A0084E532 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -90,6 +92,7 @@
 				7CCC910C1A605D2A0084E532 /* ViewController.swift */,
 				7CCC910E1A605D2A0084E532 /* Main.storyboard */,
 				7CCC91081A605D2A0084E532 /* Supporting Files */,
+				7C792F1D1A6477D30004C3E2 /* test.txt */,
 			);
 			name = SwiftSummary;
 			path = "swift-summary";
@@ -201,6 +204,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7C792F1E1A6477D30004C3E2 /* test.txt in Resources */,
 				7CCC91101A605D2A0084E532 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
