@@ -12,49 +12,45 @@ public class Summary {
     
     func splitContentToSentences(content:String) -> [String]
     {
-        var contentString = content as NSString
-        
-        var sentences = [String]()
-        
-        contentString.enumerateSubstringsInRange(NSMakeRange(0, (contentString as NSString).length), options: NSStringEnumerationOptions.BySentences) { (sentence, substringRange, enclosingRange, stop) -> () in
-            
-            var trimmedSentence = sentence.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
-            
-            //remove blank lines
-            if(countElements(trimmedSentence) > 0)
-            {
-                sentences.append(trimmedSentence as String)
-            }
-        }
-        
-        return sentences
+        return splitContent(content, enumerationOption: NSStringEnumerationOptions.BySentences)
     }
     
     func splitContentToParagraphs(content:String) -> [String]
     {
-        var contentString = content as NSString
+        return splitContent(content, enumerationOption: NSStringEnumerationOptions.ByParagraphs)
+    }
     
-        var paragraphs = [String]()
+    func splitContentToWords(content:String) -> [String]
+    {
+        return content.componentsSeparatedByString(" "); //This is a lot faster than the implementation below
+//        return splitContent(content, enumerationOption: NSStringEnumerationOptions.ByWords)
+    }
+    
+    func splitContent(content:String, enumerationOption:NSStringEnumerationOptions) -> [String]
+    {
+        var contentString = content as NSString
         
-        contentString.enumerateSubstringsInRange(NSMakeRange(0, (contentString as NSString).length), options: NSStringEnumerationOptions.ByParagraphs) { (paragraph, substringRange, enclosingRange, stop) -> () in
+        var splitContent = [String]()
+        
+        contentString.enumerateSubstringsInRange(NSMakeRange(0, (contentString as NSString).length), options: enumerationOption) { (splitString, substringRange, enclosingRange, stop) -> () in
             
-            var trimmedParagraph = paragraph.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
+            var trimmedString = splitString.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
             
             //remove blank lines
-            if(countElements(trimmedParagraph) > 0)
+            if(countElements(trimmedString) > 0)
             {
-                paragraphs.append(paragraph as String)
+                splitContent.append(trimmedString as String)
             }
         }
         
-        return paragraphs
+        return splitContent
     }
 
     func getSentencesIntersectionScore(sent1:String, sent2:String) -> Float
     {
         //split sentences to words
-        let s1 = sent1.componentsSeparatedByString(" ");
-        let s2 = sent2.componentsSeparatedByString(" ");
+        let s1 = splitContentToWords(sent1)
+        let s2 = splitContentToWords(sent2)
         
         //if no words, then score is 0.
         if s1.count + s2.count == 0
