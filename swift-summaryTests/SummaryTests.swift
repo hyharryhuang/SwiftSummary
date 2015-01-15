@@ -28,9 +28,14 @@ class SummaryTests: XCTestCase {
         let path = bundle.pathForResource("test", ofType: "txt")
         let content = String(contentsOfFile: path!, encoding: NSUTF8StringEncoding, error: nil)
         
-//        let location = "~/test.txt".stringByExpandingTildeInPath
-//        let text2 = String(contentsOfFile: location, encoding: NSUTF8StringEncoding, error: nil)
-        
         print(summary.getSummary("hello", content: content!))
     }
+    
+//    func testFilter() {
+//        var a = ["hello","hi"];
+//        
+//        var b = ["HELLO", "hi"];
+//        
+//        print(a.filter({contains(b.map({$0.lowercaseString}), $0.lowercaseString)}))
+//    }
 }

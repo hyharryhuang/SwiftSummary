@@ -12,9 +12,9 @@ public class Summary {
     
     func splitContentToSentences(content:String) -> [String]
     {
-        let replacedContent = content.stringByReplacingOccurrencesOfString("\n", withString: ".", options: NSStringCompareOptions.LiteralSearch, range: nil)
-        
-        return replacedContent.componentsSeparatedByString(". ")
+        let replacedContent = content.stringByReplacingOccurrencesOfString("\n", withString: ". ", options: NSStringCompareOptions.LiteralSearch, range: nil)
+        var replacedArray = replacedContent.componentsSeparatedByString(". ")
+        return replacedArray
     }
     
     func splitContentToParagraphs(content:String) -> [String]
@@ -35,10 +35,17 @@ public class Summary {
         }
         
         //find intersection elements between S1 and S2
-        let s1InS2 = s1.filter { contains(s2, $0) }
+        let s1InS2 = getStringArrayIntersectionCaseInsensitive(s1, arr2: s2)
         
         //score is the normalised intersection value
         return Float(s1InS2.count) / (Float(s1.count + s2.count)/2.0)
+    }
+    
+    func getStringArrayIntersectionCaseInsensitive(arr1:[String], arr2:[String]) -> [String]
+    {
+        let lowerCaseArr2 = arr2.map({$0.lowercaseString})
+        
+        return arr1.filter({contains(lowerCaseArr2, $0.lowercaseString)})
     }
     
     func formatSentence(sentence:String) -> String
@@ -85,8 +92,6 @@ public class Summary {
                 }
                 
                 score += values[i][j]
-                
-                jValues.append(getSentencesIntersectionScore(sentences[i], sent2: sentences[j]))
             }
             
             sentencesDictionary[formatSentence(sentences[i])] = score
@@ -112,10 +117,13 @@ public class Summary {
         for s in sentences {
             var formatedSentence = formatSentence(s)
             
-            if sentencesDictionary[formatedSentence] > maxValue
+            if(countElements(formatedSentence) > 0)
             {
-                maxValue = sentencesDictionary[formatedSentence]!
-                bestSentence = s
+                if sentencesDictionary[formatedSentence] > maxValue
+                {
+                    maxValue = sentencesDictionary[formatedSentence]!
+                    bestSentence = s
+                }
             }
         }
         
@@ -140,7 +148,7 @@ public class Summary {
             var trimmedSentence = sentence.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
             
             if countElements(trimmedSentence) > 0 {
-                summary.append(trimmedSentence)
+                summary.append(trimmedSentence + ".")
             }
         }
         
