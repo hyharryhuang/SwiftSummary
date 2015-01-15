@@ -22,7 +22,7 @@
 			containerPortal = 7CCC90FD1A605D2A0084E532 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 7CCC91041A605D2A0084E532;
-			remoteInfo = "swift-summary";
+			remoteInfo = "SwiftSummary";
 		};
 /* End PBXContainerItemProxy section */
 
@@ -63,7 +63,7 @@
 				7CCC912C1A60840A0084E532 /* Summary.swift */,
 			);
 			name = Summary;
-			path = "swift-summary";
+			path = "SwiftSummary";
 			sourceTree = "<group>";
 		};
 		7CCC90FC1A605D2A0084E532 = {
@@ -95,7 +95,7 @@
 				7C792F1D1A6477D30004C3E2 /* test.txt */,
 			);
 			name = SwiftSummary;
-			path = "swift-summary";
+			path = "SwiftSummary";
 			sourceTree = "<group>";
 		};
 		7CCC91081A605D2A0084E532 /* Supporting Files */ = {
@@ -113,7 +113,7 @@
 				7CCC911E1A605D2A0084E532 /* Supporting Files */,
 			);
 			name = SwiftSummary;
-			path = "swift-summaryTests";
+			path = "SwiftSummaryTests";
 			sourceTree = "<group>";
 		};
 		7CCC911E1A605D2A0084E532 /* Supporting Files */ = {
@@ -140,7 +140,7 @@
 			dependencies = (
 			);
 			name = SwiftSummary;
-			productName = "swift-summary";
+			productName = "SwiftSummary";
 			productReference = 7CCC91051A605D2A0084E532 /* SwiftSummary.app */;
 			productType = "com.apple.product-type.application";
 		};
@@ -158,7 +158,7 @@
 				7CCC911C1A605D2A0084E532 /* PBXTargetDependency */,
 			);
 			name = SwiftSummaryTests;
-			productName = "swift-summaryTests";
+			productName = "SwiftSummaryTests";
 			productReference = 7CCC911A1A605D2A0084E532 /* SwiftSummaryTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
@@ -341,7 +341,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				INFOPLIST_FILE = "swift-summary/Info.plist";
+				INFOPLIST_FILE = "SwiftSummary/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = SwiftSummary;
 			};
@@ -351,7 +351,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				INFOPLIST_FILE = "swift-summary/Info.plist";
+				INFOPLIST_FILE = "SwiftSummary/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = SwiftSummary;
 			};
@@ -369,7 +369,7 @@
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = "swift-summaryTests/Info.plist";
+				INFOPLIST_FILE = "SwiftSummaryTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = SwiftSummaryTests;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SwiftSummary.app/SwiftSummary";
@@ -384,7 +384,7 @@
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = "swift-summaryTests/Info.plist";
+				INFOPLIST_FILE = "SwiftSummaryTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = SwiftSummaryTests;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SwiftSummary.app/SwiftSummary";
