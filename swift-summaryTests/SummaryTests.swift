@@ -23,12 +23,27 @@ class SummaryTests: XCTestCase {
         super.tearDown()
     }
     
+//    func testSplitContentToParagraphs() {
+//        let paragraphs = ["Several", "Paragraphs", "Are", "In", "This", "Text"]
+//        let content = "\n\n".join(paragraphs)
+//    
+//        XCTAssert(summary.splitContentToParagraphs(content) == paragraphs)
+//    }
+//    
+//    func testSplitContentToSentences() {
+//        let sentences = ["This is a sentence", " This is another sentence", "\nand one with a break."]
+//        let content = ". ".join(sentences)
+//        
+//        println(summary.splitContentToSentences(content))
+//        
+//    }
+    
     func testSummary() {
         let bundle = NSBundle.mainBundle()
         let path = bundle.pathForResource("test", ofType: "txt")
         let content = String(contentsOfFile: path!, encoding: NSUTF8StringEncoding, error: nil)
         
-        print(summary.getSummary("hello", content: content!))
+        print(summary.getSummary("Hello", content: content!))
     }
     
 //    func testFilter() {

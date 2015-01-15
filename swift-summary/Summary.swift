@@ -1,6 +1,6 @@
 //
 //  Summary.swift
-//  swift-summary
+//  SwiftSummary
 //
 //  Created by Harry Huang on 09/01/2015.
 //  Copyright (c) 2015 HHH. All rights reserved.
@@ -12,16 +12,44 @@ public class Summary {
     
     func splitContentToSentences(content:String) -> [String]
     {
-        let replacedContent = content.stringByReplacingOccurrencesOfString("\n", withString: ". ", options: NSStringCompareOptions.LiteralSearch, range: nil)
-        var replacedArray = replacedContent.componentsSeparatedByString(". ")
-        return replacedArray
+        var contentString = content as NSString
+        
+        var sentences = [String]()
+        
+        contentString.enumerateSubstringsInRange(NSMakeRange(0, (contentString as NSString).length), options: NSStringEnumerationOptions.BySentences) { (sentence, substringRange, enclosingRange, stop) -> () in
+            
+            var trimmedSentence = sentence.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
+            
+            //remove blank lines
+            if(countElements(trimmedSentence) > 0)
+            {
+                sentences.append(trimmedSentence as String)
+            }
+        }
+        
+        return sentences
     }
     
     func splitContentToParagraphs(content:String) -> [String]
     {
-        return content.componentsSeparatedByString("\n\n");
-    }
+        var contentString = content as NSString
     
+        var paragraphs = [String]()
+        
+        contentString.enumerateSubstringsInRange(NSMakeRange(0, (contentString as NSString).length), options: NSStringEnumerationOptions.ByParagraphs) { (paragraph, substringRange, enclosingRange, stop) -> () in
+            
+            var trimmedParagraph = paragraph.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
+            
+            //remove blank lines
+            if(countElements(trimmedParagraph) > 0)
+            {
+                paragraphs.append(paragraph as String)
+            }
+        }
+        
+        return paragraphs
+    }
+
     func getSentencesIntersectionScore(sent1:String, sent2:String) -> Float
     {
         //split sentences to words
@@ -148,10 +176,10 @@ public class Summary {
             var trimmedSentence = sentence.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
             
             if countElements(trimmedSentence) > 0 {
-                summary.append(trimmedSentence + ".")
+                summary.append(trimmedSentence)
             }
         }
         
-        return "\n".join(summary)
+        return "\n\n".join(summary)
     }
 }
