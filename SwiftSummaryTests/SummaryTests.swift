@@ -53,7 +53,19 @@ class SummaryTests: XCTestCase {
         XCTAssert(summary.getStringArrayIntersectionCaseInsensitive(array1, arr2: array2) == expectedResult)
     }
     
-    
+    func testGetSentencesIntersectionScore() {
+        //case 1: no words in either sentence
+        XCTAssert( summary.getSentencesIntersectionScore("", sent2: "") == 0)
+        
+        //case 2: words in both sentences
+        let sentence1 = "hello this is a sentence" //5 words
+        let sentence2 = "THIS IS ANOTHER SENTENCE" //4 words
+        
+        let expectedIntersection = ["this", "is", "sentence"]
+        
+        let expectedScore = Float(expectedIntersection.count) / (Float(5+4) / 2)
+        XCTAssert(summary.getSentencesIntersectionScore(sentence1, sent2: sentence2) == expectedScore)
+    }
     
 //    func testSummary() {
 //        let bundle = NSBundle.mainBundle()

@@ -22,8 +22,13 @@ public class Summary {
     
     func splitContentToWords(content:String) -> [String]
     {
-        return content.componentsSeparatedByString(" "); //This is a lot faster than the implementation below
-//        return splitContent(content, enumerationOption: NSStringEnumerationOptions.ByWords)
+        if(countElements(content) == 0)
+        {
+            return []
+        } else {
+            return content.componentsSeparatedByString(" "); //This is a lot faster than the implementation below
+            //        return splitContent(content, enumerationOption: NSStringEnumerationOptions.ByWords)
+        }
     }
     
     func splitContent(content:String, enumerationOption:NSStringEnumerationOptions) -> [String]
