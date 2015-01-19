@@ -44,6 +44,17 @@ class SummaryTests: XCTestCase {
         XCTAssert(summary.splitContentToWords(content) == words)
     }
     
+    func testGetStringArrayIntersectionCaseInsensitive() {
+        let array1 = ["hello", "testing", "TEST"]
+        let array2 = ["HELLO", "testing", "test again"]
+        
+        let expectedResult = ["hello", "testing"]
+        
+        XCTAssert(summary.getStringArrayIntersectionCaseInsensitive(array1, arr2: array2) == expectedResult)
+    }
+    
+    
+    
 //    func testSummary() {
 //        let bundle = NSBundle.mainBundle()
 //        let path = bundle.pathForResource("test", ofType: "txt")
