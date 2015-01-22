@@ -44,15 +44,6 @@ class SummaryTests: XCTestCase {
         XCTAssert(summary.splitContentToWords(content) == words)
     }
     
-    func testGetStringArrayIntersectionCaseInsensitive() {
-        let array1 = ["hello", "testing", "TEST"]
-        let array2 = ["HELLO", "testing", "test again"]
-        
-        let expectedResult = ["hello", "testing"]
-        
-        XCTAssert(summary.getStringArrayIntersectionCaseInsensitive(array1, arr2: array2) == expectedResult)
-    }
-    
     func testGetSentencesIntersectionScore() {
         //case 1: no words in either sentence
         XCTAssert( summary.getSentencesIntersectionScore("", sent2: "") == 0)
@@ -67,19 +58,28 @@ class SummaryTests: XCTestCase {
         XCTAssert(summary.getSentencesIntersectionScore(sentence1, sent2: sentence2) == expectedScore)
     }
     
-//    func testSummary() {
-//        let bundle = NSBundle.mainBundle()
-//        let path = bundle.pathForResource("test", ofType: "txt")
-//        let content = String(contentsOfFile: path!, encoding: NSUTF8StringEncoding, error: nil)
-//        
-//        print(summary.getSummary("Hello", content: content!))
-//    }
+    func testGetStringArrayIntersectionCaseInsensitive() {
+        let array1 = ["hello", "testing", "TEST"]
+        let array2 = ["HELLO", "testing", "test again"]
+        
+        let expectedResult = ["hello", "testing"]
+        
+        XCTAssert(summary.getStringArrayIntersectionCaseInsensitive(array1, arr2: array2) == expectedResult)
+    }
     
-//    func testFilter() {
-//        var a = ["hello","hi"];
-//        
-//        var b = ["HELLO", "hi"];
-//        
-//        print(a.filter({contains(b.map({$0.lowercaseString}), $0.lowercaseString)}))
-//    }
+    func testGetBestSentence() {
+        //Case 1: If less than two sentences in a paragraph, expect empty string.
+        let paragraph1 = "Hello this is a sentence. And another one."
+        XCTAssert(summary.getBestSentence(paragraph1, sentencesDictionary: [String:Float]()) == "")
+        
+        //Case 2: More than two sentences, expect best ranked one.
+        let paragraph2 = "This is a sentence. And another one. And this is also one."
+        let testSentencesDictionary = ["Thisisasentence" : Float(3), "Andanotherone" : Float(2), "Andthisisalsoone" : Float(0)];
+        XCTAssert(summary.getBestSentence(paragraph2, sentencesDictionary: testSentencesDictionary) == "This is a sentence.")
+        
+        //Case 3: More than two sentences, but sentence dictionary does not contain any relevant ranks.
+        let paragraph3 = "This is a sentence. And another one. And this is also one."
+        let testSentencesDictionary2 = ["Something" : Float(3), "SomethingElse" : Float(2), "OneMore" : Float(0)];
+        XCTAssert(summary.getBestSentence(paragraph3, sentencesDictionary: testSentencesDictionary2) == "")
+    }
 }
