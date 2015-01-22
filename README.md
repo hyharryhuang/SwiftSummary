@@ -1,5 +1,5 @@
 # SwiftSummary
-Naive summary algorithm based inspired by a [Python implementation](https://gist.github.com/shlomibabluki/5473521).
+Naive summary algorithm based inspired by a [Python implementation](https://gist.github.com/shlomibabluki/5473521). Summarises a block of text based on its paragraphs.
 
 # Installation
 Copy `SwiftSummary.swift` to your project.
