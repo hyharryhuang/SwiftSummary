@@ -1,35 +1,31 @@
-Lior Degani, the Co-Founder and head of Marketing of Swayy, pinged me last week when I was in California to tell me about his startup and give me beta access. I heard his pitch and was skeptical. I was also tired, cranky and missing my kids – so my frame of mind wasn’t the most positive.
+Another keyboard contender has launched on iOS hoping to convince teens to shell out a few bucks for an app that gives them quick fire access to the characters that matter most in their texting life: emoji.
 
-I went into Swayy to check it out, and when it asked for access to my Twitter and permission to tweet from my account, all I could think was, “If this thing spams my Twitter account I am going to bitch-slap him all over the Internet.” Fortunately that thought stayed in my head, and not out of my mouth.
+The backstory here is that Apple finally opened up developer access to the keyboard in iOS 8 last fall. Since then we’ve seen a raft of alternative iOS keyboard apps popping up to try to garner a following.
 
-One week later, I’m totally addicted to Swayy and glad I said nothing about the spam (it doesn’t send out spam tweets but I liked the line too much to not use it for this article). I pinged Lior on Facebook with a request for a beta access code for TNW readers. I also asked how soon can I write about it. It’s that good. Seriously. I use every content curation service online. It really is That Good.
+The latest of these, the Qwerky gesture-based keyboard — made by a U.K.-based dev team, puts emojis a mere swipe away from a standard Qwerty keyboard so users can speedily switch between letters and symbols as they type.
 
-What is Swayy? It’s like Percolate and LinkedIn recommended articles, mixed with trending keywords for the topics you find interesting, combined with an analytics dashboard that shows the trends of what you do and how people react to it. I like it for the simplicity and accuracy of the content curation. Everything I’m actually interested in reading is in one place – I don’t have to skip from another major tech blog over to Harvard Business Review then hop over to another major tech or business blog. It’s all in there. And it has saved me So Much Time
+The numbers and punctuation screen is also positioned a Tinderish gesture away, instead of requiring the typist to precision-tap a corner key to toggle between keyboards every time they want to add in an apostrophe or punctuate their missive with a smiling poop — as is the case on the native iOS keyboard.
 
-After I decided that I trusted the service, I added my Facebook and LinkedIn accounts. The content just got That Much Better. I can share from the service itself, but I generally prefer reading the actual post first – so I end up sharing it from the main link, using Swayy more as a service for discovery.
+Qwerky’s gestures offer only incremental convenience, sure, but if your typical texting output looks something like this —
 
-I’m also finding myself checking out trending keywords more often (more often than never, which is how often I do it on Twitter.com).
+qwerky
 
-The analytics side isn’t as interesting for me right now, but that could be due to the fact that I’ve barely been online since I came back from the US last weekend. The graphs also haven’t given me any particularly special insights as I can’t see which post got the actual feedback on the graph side (however there are numbers on the Timeline side.) This is a Beta though, and new features are being added and improved daily. I’m sure this is on the list. As they say, if you aren’t launching with something you’re embarrassed by, you’ve waited too long to launch.
+— then you’re going to find the ability to shortcut between letters and emojis pretty sweet.
 
-It was the suggested content that impressed me the most. The articles really are spot on – which is why I pinged Lior again to ask a few questions:
+“We found Swiftkey/Swype/etc are slow to reach the keys you really want (that winky face… or aubergine!).  With our keyboard, swiping left and right quickly navigates from text to emojis,” says  co-founder Ed Moyse, explaining what problem the Qwerky team set out to fix.
 
-How do you choose the articles listed on the site? Is there an algorithm involved? And is there any IP?
+As well as letting users summon emoji with a swipe, Qwerky has some emoticon-shaped easter eggs up its sleeve. Such as if you type ‘saturdaynight’ the keyboard will sub out your letters for an emoji version of John Travolta (pictured at the top of this post). Or write ‘ciaofornow’. Or ‘SANTA’ (an Xmas launch was originally planned for Qwerky).
 
-Yes, we’re in the process of filing a patent for it. But basically the system works with a Natural Language Processing Engine. Actually, there are several parts for the content matching, but besides analyzing what topics the articles are talking about, we have machine learning algorithms that match you to the relevant suggested stuff. For example, if you shared an article about Zuck that got a good reaction from your followers, we might offer you another one about Kevin Systrom (just a simple example).
+More such bonus ‘emoji art’ subs are apparently incoming.
 
-Who came up with the idea for Swayy, and why? And what’s your business model?
+Now Qwerky is by no means the only alt iOS keyboard seeking to cash in on teens’ emoticon (and GIF) <3. Other emoji keyboards launching on iOS in recent times include the place-to-go-suggesting Goji, the better laid out Emoji++, and the symbol suggesting Keymoji, to name three. But Qwerky is hoping it’s focus on speed and simplicity will help the app stand out in a crowded space.
 
-Our business model is a subscription model for extra social accounts (extra Facebook / Twitter, etc) and team collaboration.
+“We’re aiming to stand out/convince people to stay by offering a keyboard that lets you type like a human,” says Moyse. “People use a combination of text, emojis, pictures, and GIFs to express themselves, but other keyboards don’t handle this satisfactorily.”
 
-The idea was born from our day-to-day need to be active on social media, look for the best content to share with our followers, grow them, and measure what content works best.
+Qwerky is not a free app — but that’s fairly standard for smaller keyboard app makers. It’s priced at $0.99 for launch week, and $1.99 thereafter. So yes, this is absolutely about cashing in on teens wanting to send pictures of cash to each other. But that’s a sign of our emoji-loving times.
 
-Who is on the team?
+One word of warning: there is no word prediction with Qwerky. So depending on how much you lean on Apple’s (or others’) next word suggestion algorithms to speed your typing you might actually find it slower to bash out words on Qwerky.
 
-Ohad Frankfurt is the CEO, Shlomi Babluki is the CTO and Oz Katz does Product and Engineering, and I [Lior Degani] do Marketing. The four of us are the founders. Oz and I were in 8200 [an elite Israeli army unit] together. Emily Engelson does Community Management and Graphic Design.
+But, then again, if you reckon emoting is > spelling anyway that’s probably not going to bother you too much.
 
-If you use Percolate or read LinkedIn’s recommended posts I think you’ll love Swayy.
-
-➤ Want to try Swayy out without having to wait? Go to this secret URL and enter the promotion code thenextweb . The first 300 people to use the code will get access.
-
-Image credit: Thinkstock
+Calling all Actual Teens.
