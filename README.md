@@ -15,7 +15,7 @@ var summarisedContent = summary.getSummary(title, content: content)
 ```
 
 # Example
-This [TechCrunch article](http://techcrunch.com/2015/01/19/qwerky/) is summarised to:
+This [TechCrunch article](http://techcrunch.com/2015/01/19/qwerky/) is summarised as:
 ```text
 Qwerky Keyboard Speeds Up Typing Emoji On iOS
 
