@@ -1,10 +1,10 @@
 # SwiftSummary
 Naive summary algorithm inspired by a [Python implementation](https://gist.github.com/shlomibabluki/5473521). Summarises a block of text based on its paragraphs.
 
-# Installation
+## Installation
 Copy `SwiftSummary.swift` to your project.
 
-# Usage
+## Usage
 ```swift
 let summary = Summary()
 
@@ -14,7 +14,7 @@ var content = "Some article content"
 var summarisedContent = summary.getSummary(title, content: content)
 ```
 
-# Example
+## Example
 This [TechCrunch article](http://techcrunch.com/2015/01/19/qwerky/) is summarised as:
 ```text
 Qwerky Keyboard Speeds Up Typing Emoji On iOS
