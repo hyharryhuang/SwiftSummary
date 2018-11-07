@@ -12,50 +12,50 @@ public class Summary {
     
     func splitContentToSentences(content:String) -> [String]
     {
-        return splitContent(content, enumerationOption: NSStringEnumerationOptions.BySentences)
+        return splitContent(content: content, enumerationOption: NSString.EnumerationOptions.bySentences)
     }
     
     func splitContentToParagraphs(content:String) -> [String]
     {
-        return splitContent(content, enumerationOption: NSStringEnumerationOptions.ByParagraphs)
+        return splitContent(content: content, enumerationOption: NSString.EnumerationOptions.byParagraphs)
     }
     
     func splitContentToWords(content:String) -> [String]
     {
-        if(countElements(content) == 0)
+        if(countElements(item: content) == 0)
         {
             return []
         } else {
-            return content.componentsSeparatedByString(" "); //This is a lot faster than the implementation below
+            return content.components(separatedBy: " ")
             //        return splitContent(content, enumerationOption: NSStringEnumerationOptions.ByWords)
         }
     }
     
-    func splitContent(content:String, enumerationOption:NSStringEnumerationOptions) -> [String]
+    func splitContent(content:String, enumerationOption:NSString.EnumerationOptions) -> [String]
     {
-        var contentString = content as NSString
+        let contentString = content as NSString
         
         var splitContent = [String]()
         
-        contentString.enumerateSubstringsInRange(NSMakeRange(0, (contentString as NSString).length), options: enumerationOption) { (splitString, substringRange, enclosingRange, stop) -> () in
+        contentString.enumerateSubstrings(in: NSMakeRange(0, (contentString as NSString).length), options: enumerationOption) { (splitString, substringRange, enclosingRange, stop) -> () in
             
-            var trimmedString = splitString.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
+            let trimmedString = splitString?.trimmingCharacters(in: .whitespacesAndNewlines)
             
             //remove blank lines
-            if(countElements(trimmedString) > 0)
+            if(self.countElements(item: trimmedString!) > 0)
             {
-                splitContent.append(trimmedString as String)
+                splitContent.append(trimmedString!)
             }
         }
         
         return splitContent
     }
-
+    
     func getSentencesIntersectionScore(sent1:String, sent2:String) -> Float
     {
         //split sentences to words
-        let s1 = splitContentToWords(sent1)
-        let s2 = splitContentToWords(sent2)
+        let s1 = splitContentToWords(content: sent1)
+        let s2 = splitContentToWords(content: sent2)
         
         //if no words, then score is 0.
         if s1.count + s2.count == 0
@@ -64,7 +64,7 @@ public class Summary {
         }
         
         //find intersection elements between S1 and S2
-        let s1InS2 = getStringArrayIntersectionCaseInsensitive(s1, arr2: s2)
+        let s1InS2 = getStringArrayIntersectionCaseInsensitive(arr1: s1, arr2: s2)
         
         //score is the normalised intersection value
         return Float(s1InS2.count) / (Float(s1.count + s2.count)/2.0)
@@ -72,22 +72,26 @@ public class Summary {
     
     func getStringArrayIntersectionCaseInsensitive(arr1:[String], arr2:[String]) -> [String]
     {
-        let lowerCaseArr2 = arr2.map({$0.lowercaseString})
+        let lowerCaseArr2 = arr2.map({$0.lowercased()})
         
-        return arr1.filter({contains(lowerCaseArr2, $0.lowercaseString)})
+        return arr1.filter({ lowerCaseArr2.contains($0.lowercased()) })
     }
     
     func formatSentence(sentence:String) -> String
     {
-        let regex = NSRegularExpression(pattern:"\\W+", options: .CaseInsensitive, error: nil)
-        let modifiedString = regex!.stringByReplacingMatchesInString(sentence, options: nil, range: NSRange(location: 0,length: countElements(sentence)), withTemplate: "")
-        
-        return modifiedString
+        do {
+            let regex = try NSRegularExpression(pattern: "\\W+", options: .caseInsensitive)
+            let modifiedString = regex.stringByReplacingMatches(in: sentence, options: [], range: NSRange(location: 0,length: countElements(item: sentence)), withTemplate: "")
+            
+            return modifiedString
+        } catch {
+            return ""
+        }
     }
-
+    
     func getSentenceRanks(content:String) -> [String:Float]
     {
-        var sentences = splitContentToSentences(content)
+        var sentences = splitContentToSentences(content: content)
         
         var n = sentences.count
         
@@ -99,7 +103,7 @@ public class Summary {
             var jValues = [Float]()
             
             for j in 0 ... n-1 {
-                jValues.append(getSentencesIntersectionScore(sentences[i], sent2: sentences[j]))
+                jValues.append(getSentencesIntersectionScore(sent1: sentences[i], sent2: sentences[j]))
             }
             
             values.append(jValues)
@@ -123,7 +127,7 @@ public class Summary {
                 score += values[i][j]
             }
             
-            sentencesDictionary[formatSentence(sentences[i])] = score
+            sentencesDictionary[formatSentence(sentence: sentences[i])] = score
         }
         
         return sentencesDictionary
@@ -133,7 +137,7 @@ public class Summary {
     func getBestSentence(paragraph:String, sentencesDictionary:[String: Float]) -> String
     {
         //Split the paragraph into sentences
-        var sentences = splitContentToSentences(paragraph)
+        var sentences = splitContentToSentences(content: paragraph)
         
         if(sentences.count < 2) {
             return ""
@@ -144,11 +148,11 @@ public class Summary {
         var maxValue:Float = 0.0
         
         for s in sentences {
-            var formatedSentence = formatSentence(s)
+            var formatedSentence = formatSentence(sentence: s)
             
-            if(countElements(formatedSentence) > 0)
+            if(countElements(item: formatedSentence) > 0)
             {
-                if sentencesDictionary[formatedSentence] > maxValue
+                if sentencesDictionary[formatedSentence]! > maxValue
                 {
                     maxValue = sentencesDictionary[formatedSentence]!
                     bestSentence = s
@@ -161,26 +165,30 @@ public class Summary {
     
     public func getSummary(title:String, content:String) -> String
     {
-        var sentencesDictionary = getSentenceRanks(content)
+        var sentencesDictionary = getSentenceRanks(content: content)
         
         //split content into paragraphs
-        var paragraphs = splitContentToParagraphs(content)
+        var paragraphs = splitContentToParagraphs(content: content)
         
         //add title
         var summary = [String]()
-
-        summary.append(title.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet()))
+        
+        summary.append(title.trimmingCharacters(in: .whitespacesAndNewlines) )
         summary.append("")
         
         for paragraph in paragraphs {
-            var sentence = getBestSentence(paragraph, sentencesDictionary: sentencesDictionary)
-            var trimmedSentence = sentence.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
+            var sentence = getBestSentence(paragraph: paragraph, sentencesDictionary: sentencesDictionary)
+            var trimmedSentence = sentence.trimmingCharacters(in: .whitespacesAndNewlines)
             
-            if countElements(trimmedSentence) > 0 {
+            if countElements(item: trimmedSentence) > 0 {
                 summary.append(trimmedSentence)
             }
         }
         
-        return "\n\n".join(summary)
+        return summary.joined(separator: "\n\n")
+    }
+    
+    func countElements(item : Any) -> Int {
+        return (item as AnyObject).trimmingCharacters(in: .whitespacesAndNewlines).characters.count
     }
 }
